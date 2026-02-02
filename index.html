@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Desk | Dark Oak IT Solutions</title>
+  <meta name="description" content="Dark Oak IT Solutions Service Desk — submit tickets, check service hours, and get help fast." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">DO</div>
+        <div class="brand-text">
+          <div class="brand-name">Dark Oak IT Solutions</div>
+          <div class="brand-sub">Service Desk</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#submit">Submit Ticket</a>
+        <a href="#status">Service Status</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="btn btn-ghost" id="themeToggle" type="button" aria-label="Toggle theme">
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>How can we help today?</h1>
+        <p class="lead">
+          Submit a ticket, report an outage, or request access. We’ll route it to the right queue.
+        </p>
+
+        <div class="quick-actions">
+          <a class="card" href="#submit">
+            <div class="card-title">Submit a Ticket</div>
+            <div class="card-text">New issue, request, or question</div>
+          </a>
+
+          <a class="card" href="#status">
+            <div class="card-title">Service Status</div>
+            <div class="card-text">Known issues and maintenance</div>
+          </a>
+
+          <a class="card" href="#contact">
+            <div class="card-title">Emergency Contact</div>
+            <div class="card-text">Critical outage escalation</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="submit" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Submit a Ticket</h2>
+          <p class="muted">This form opens your email client and drafts a ticket email.</p>
+        </div>
+
+        <div class="grid">
+          <form class="panel" id="ticketForm">
+            <div class="row">
+              <div class="field">
+                <label for="requestType">Request type</label>
+                <select id="requestType" required>
+                  <option value="" selected disabled>Select one…</option>
+                  <option>Incident (Something is broken)</option>
+                  <option>Service Request (Need something)</option>
+                  <option>Access Request</option>
+                  <option>New Hardware / Replacement</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="priority">Priority</label>
+                <select id="priority" required>
+                  <option value="" selected disabled>Select one…</option>
+                  <option>P1 - Critical (Outage)</option>
+                  <option>P2 - High (Major impact)</option>
+                  <option>P3 - Medium</option>
+                  <option>P4 - Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="fullName">Full name</label>
+                <input id="fullName" type="text" placeholder="Jane Doe" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="jane@company.com" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="device">Device / Asset tag (optional)</label>
+                <input id="device" type="text" placeholder="Asset Tag: DO-12345 or Device Name" />
+              </div>
+
+              <div class="field">
+                <label for="location">Location (optional)</label>
+                <input id="location" type="text" placeholder="Office / City / Remote" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="summary">Short summary</label>
+              <input id="summary" type="text" placeholder="VPN disconnected after update" required />
+            </div>
+
+            <div class="field">
+              <label for="details">Details</label>
+              <textarea id="details" rows="6" placeholder="What happened? When did it start? Error messages? Steps tried?" required></textarea>
+              <div class="hint">Tip: include screenshots as attachments in your email draft.</div>
+            </div>
+
+            <div class="actions">
+              <button class="btn" type="submit">Create Ticket Email</button>
+              <button class="btn btn-ghost" type="button" id="clearBtn">Clear</button>
+            </div>
+
+            <div class="note">
+              <strong>Heads up:</strong> GitHub Pages can’t run server-side ticketing. This uses email drafting.
+              If you want real ticket storage, we can switch this to a form backend (Google Forms, Formspree, Zoho Desk, Freshdesk, etc.).
+            </div>
+          </form>
+
+          <aside class="panel panel-lite">
+            <h3>What counts as Priority?</h3>
+            <ul class="list">
+              <li><strong>P1</strong> — Business is down (network outage, email down, ransomware event)</li>
+              <li><strong>P2</strong> — Major impact (multiple users blocked, core app degraded)</li>
+              <li><strong>P3</strong> — Single user / workaround exists</li>
+              <li><strong>P4</strong> — Minor request / cosmetic / how-to</li>
+            </ul>
+
+            <hr class="sep" />
+
+            <h3>What to include</h3>
+            <ul class="list">
+              <li>Exact error message</li>
+              <li>Time it started</li>
+              <li>Device name/asset tag</li>
+              <li>Steps you already tried</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="status" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Service Status</h2>
+          <p class="muted">Manually update this section when there’s a known issue or maintenance window.</p>
+        </div>
+
+        <div class="status-grid">
+          <div class="status-card ok">
+            <div class="status-title">Email</div>
+            <div class="status-pill">Operational</div>
+            <div class="status-text">No known issues.</div>
+          </div>
+
+          <div class="status-card ok">
+            <div class="status-title">VPN</div>
+            <div class="status-pill">Operational</div>
+            <div class="status-text">No known issues.</div>
+          </div>
+
+          <div class="status-card warn">
+            <div class="status-title">File Shares</div>
+            <div class="status-pill">Degraded</div>
+            <div class="status-text">Intermittent slowness reported. Mitigation in progress.</div>
+          </div>
+
+          <div class="status-card ok">
+            <div class="status-title">Password Reset</div>
+            <div class="status-pill">Operational</div>
+            <div class="status-text">Self-service available.</div>
+          </div>
+        </div>
+
+        <div class="panel panel-lite">
+          <h3>Maintenance Window</h3>
+          <p class="muted">
+            <strong>Example:</strong> Sundays 2:00–4:00 AM (local). Post updates here when applicable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="muted">Common fixes and quick answers.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item">
+            <summary>How do I reset my password?</summary>
+            <div class="faq-body">
+              Use your company’s password reset portal (if available). If you don’t have access, submit a ticket with “Access Request” and include your username.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>My Wi-Fi is connected but nothing loads.</summary>
+            <div class="faq-body">
+              Try toggling Wi-Fi off/on, then reboot. If it’s still down, note whether other devices work on the same network and submit an “Incident”.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>VPN won’t connect.</summary>
+            <div class="faq-body">
+              Restart your computer, confirm your internet works, and try again. If you see a specific error code, include it in the ticket.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How fast will I get a response?</summary>
+            <div class="faq-body">
+              Typical response targets: P1 within 15–30 minutes, P2 within 1–2 hours, P3 same business day, P4 within 1–3 business days.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Replace the placeholders with your real support channels.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="panel">
+            <h3>Support Email</h3>
+            <p class="big">
+              <a href="mailto:support@darkoakit.com">support@darkoakit.com</a>
+            </p>
+            <p class="muted">Primary intake for tickets and requests.</p>
+          </div>
+
+          <div class="panel">
+            <h3>Phone (Urgent)</h3>
+            <p class="big">
+              <a href="tel:+15125550123">(512) 555-0123</a>
+            </p>
+            <p class="muted">Use for P1 outages only.</p>
+          </div>
+
+          <div class="panel">
+            <h3>Service Hours</h3>
+            <p class="big">Mon–Fri, 8:00 AM – 5:00 PM</p>
+            <p class="muted">After-hours support by agreement / on-call.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Dark Oak IT Solutions</div>
+      <div class="muted">Hosted on GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
